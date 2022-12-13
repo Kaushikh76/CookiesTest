@@ -1,33 +1,71 @@
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  let expires = "expires="+d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DATA</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
 
-function getCookie(cname) {
-  let name = cname + "=";
-  let ca = document.cookie.split(';');
-  for(let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+	<div class="container">
+		<label for="fname">FIRST NAME</label>
+		<input type="text" name="fname" id="fname">
+		<label for="lname">LAST NAME</label>
+		<input type="text" name="lname" id="lname">
+		<label for="email">EMAIL</label>
+		<input type="text" name="email" id="email">
+		<label for="age">AGE</label>
+		<input type="text" name="age" id="age">
+		<input type="button" name="button" id="btn" value="Add" onclick="AddRow()">
+		
 
-function checkCookie() {
-  let user = getCookie("username");
-  if (user != "") {
-    alert("Welcome again " + user);
-  } else {
-    user = prompt("Please enter your name:", "");
-    if (user != "" && user != null) {
-      setCookie("username", user, 365);
-    }
-  }
-}
+	</div>
+
+		<table id="show">
+			
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Age</th>
+				</tr>
+			
+		</table>
+	
+	
+	<script>
+		
+		var list1 = [];
+		var list2 = [];
+		var list3 = [];
+		var list4 = [];
+
+		var n = 1;
+		var x = 0;
+
+		function AddRow(){
+
+			var AddRown = document.getElementById('show');
+			var NewRow = AddRown.insertRow(n);
+
+			list1[x] = document.getElementById("fname").value;
+			list2[x] = document.getElementById("lname").value;
+			list3[x] = document.getElementById("email").value;
+			list4[x] = document.getElementById("age").value;
+
+			var cel1 = NewRow.insertCell(0);
+			var cel2 = NewRow.insertCell(1);
+			var cel3 = NewRow.insertCell(2);
+			var cel4 = NewRow.insertCell(3);
+
+			cel1.innerHTML = list1[x];
+			cel2.innerHTML = list2[x];
+			cel3.innerHTML = list3[x];
+			cel4.innerHTML = list4[x];
+
+			n++;
+			x++;
+		}
+
+	</script>
+</body>
+</html>
