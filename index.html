@@ -1,100 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>DATA</title>
-  <link rel="stylesheet" href="main.css">
-</head>
-<body>
-
-  <div class="container">
-    <label for="fname">FIRST NAME</label>
-    <input type="text" name="fname" id="fname">
-    <label for="lname">LAST NAME</label>
-    <input type="text" name="lname" id="lname">
-    <label for="email">EMAIL</label>
-    <input type="text" name="email" id="email">
-    <label for="age">AGE</label>
-    <input type="text" name="age" id="age">
-    <input type="button" name="button" id="btn" value="Add" onclick="AddRow()">
-    
-
-  </div>
-
-    <table id="show">
-      
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Age</th>
-          <th>Cookies</th>
-
-        </tr>
-      
-    </table>
+<!DOCTYPE html>  
+<html>  
+<head>  
+</head>  
+<body>  
+<input type="button" value="setCookie" onclick="setCookie()">  
+<input type="button" value="getCookie" onclick="getCookie()">  
+    <script>  
+    function setCookie()  
+    {  
+        document.cookie="username=Duke Martin";  
+    }  
+    function getCookie()  
+    {  
+        if(document.cookie.length!=0)  
+        {  
+            var array=document.cookie.split("=");  
+        alert("Name="+array[0]+" "+"Value="+array[1]);  
+        }  
+        else  
+        {  
+        alert("Cookie not available");  
+        }  
+    }  
+    </script>  
   
-  
-  <script>
-    function getCookie(name) {
-    // Split cookie string and get all individual name=value pairs in an array
-    var cookieArr = document.cookie.split(";");
-    
-    // Loop through the array elements
-    for(var i = 0; i < cookieArr.length; i++) {
-        var cookiePair = cookieArr[i].split("=");
-        
-        /* Removing whitespace at the beginning of the cookie name
-        and compare it with the given string */
-        if(name == cookiePair[0].trim()) {
-            // Decode the cookie value and return
-            return decodeURIComponent(cookiePair[1]);
-        }
-    }
-    
-    // Return null if not found
-    return null;
-}
-
-
-    var name = getCookie("name");
-    var list1 = [];
-    var list2 = [];
-    var list3 = [];
-    var list4 = [];
-    var list5 = [];
-
-    var n = 1;
-    var x = 0;
-
-    function AddRow(){
-
-      var AddRown = document.getElementById('show');
-      var NewRow = AddRown.insertRow(n);
-
-      list1[x] = document.getElementById("fname").value;
-      list2[x] = document.getElementById("lname").value;
-      list3[x] = document.getElementById("email").value;
-      list4[x] = document.getElementById("age").value;
-      list5[x] = document.getElementById("name").innerHTML;
-
-
-      var cel1 = NewRow.insertCell(0);
-      var cel2 = NewRow.insertCell(1);
-      var cel3 = NewRow.insertCell(2);
-      var cel4 = NewRow.insertCell(3);
-      var cel5 = NewRow.insertCell(4);
-
-      cel1.innerHTML = list1[x];
-      cel2.innerHTML = list2[x];
-      cel3.innerHTML = list3[x];
-      cel4.innerHTML = list4[x];
-      cel5.innerHTML = list5[x];
-
-
-      n++;
-      x++;
-    }
-
-  </script>
-</body>
-</html>
+</body>  
+</html>  
